@@ -41,25 +41,30 @@ Create a `.env` file based on the provided `.env.example`:
 1. Copy the `.env.example` file to `.env`
 2. Configure these essential settings:
    ```
-   DOMAIN_NAME=yourdomain
-   SUBDOMAIN=n8n
-   SSL_EMAIL=your-email@example.com
-   
-   # Security keys (use strong random strings)
-   N8N_ENCRYPTION_KEY=your-long-random-string
-   N8N_USER_MANAGEMENT_JWT_SECRET=another-long-random-string
-   
-   # Database credentials
-   DB_TYPE=postgresdb
-   DB_POSTGRESDB_HOST=postgres
-   POSTGRES_USER=n8n
-   POSTGRES_PASSWORD=your-strong-password
-   POSTGRES_DB=n8n
-   DB_POSTGRESDB_USER=${POSTGRES_USER}
-   DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
-   
-   # Timezone
-   GENERIC_TIMEZONE=UTC
+  DOMAIN_NAME=yourdomain.com
+
+  # The subdomain to serve from
+  SUBDOMAIN=n8n
+
+  # Optional timezone to set which gets used by Cron and other scheduling nodes
+  # New York is the default value if not set
+  GENERIC_TIMEZONE=Asia/Seoul # your city
+
+  # The email address to use for the TLS/SSL certificate creation
+  SSL_EMAIL=youremail@domain.com
+
+  # PostgreSQL 설정
+  POSTGRES_USER=postgres
+  POSTGRES_PASSWORD=your_password
+  POSTGRES_DB=n8n
+
+  # N8N 설정
+  N8N_ENCRYPTION_KEY=your_key
+  N8N_USER_MANAGEMENT_JWT_SECRET=your_password
+
+  # API 키 (필요한 경우)
+  Telegram_bot=
+  deepseek=
    ```
 
 ### 4. Run Docker Compose
