@@ -40,7 +40,7 @@ Create a `.env` file based on the provided `.env.example`:
 
 1. Copy the `.env.example` file to `.env`
 2. Configure these essential settings:
-   ```
+ ```
   DOMAIN_NAME=yourdomain.com
 
   # The subdomain to serve from
@@ -65,7 +65,7 @@ Create a `.env` file based on the provided `.env.example`:
   # API 키 (필요한 경우)
   Telegram_bot=
   deepseek=
-   ```
+  ```
 
 ### 4. Run Docker Compose
 
