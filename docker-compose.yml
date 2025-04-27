@@ -78,7 +78,6 @@ services:
       - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
     volumes:
-      - n8n_data:/home/node/.n8n
       - ./data/local-files:/files
       - traefik_data:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -166,6 +165,11 @@ services:
     ports:
       - "5678:5678"
     environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_USER=${POSTGRES_USER}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
       - N8N_AUTO_EDIT=true
       - N8N_AUTO_EDIT_TIMEOUT=15000
       - N8N_AUTO_EDIT_MAX_CHUNK_LENGTH=10000
@@ -186,7 +190,8 @@ services:
       - traefik.http.middlewares.n8n.headers.STSPreload=true
       - traefik.http.routers.n8n.middlewares=n8n@docker
     volumes:
-      - ./n8n/backup/n8n:/backup/
+      - n8n_data:/home/node/.n8n
+      - ./n8n/backup:/backup/
       - ./data/shared:/data/shared
       - ./data/videos:/data/videos
     depends_on:

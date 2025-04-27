@@ -50,9 +50,13 @@ Create a `.env` file based on the provided `.env.example`:
    N8N_USER_MANAGEMENT_JWT_SECRET=another-long-random-string
    
    # Database credentials
+   DB_TYPE=postgresdb
+   DB_POSTGRESDB_HOST=postgres
    POSTGRES_USER=n8n
    POSTGRES_PASSWORD=your-strong-password
    POSTGRES_DB=n8n
+   DB_POSTGRESDB_USER=${POSTGRES_USER}
+   DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
    
    # Timezone
    GENERIC_TIMEZONE=UTC
